@@ -2,52 +2,27 @@ package com.example.coroutineflow
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import androidx.lifecycle.lifecycleScope
+import com.example.coroutineflow.util.ChannelUtil
+import com.example.coroutineflow.util.ChannelUtil.rendezcousChannel
+import com.example.coroutineflow.util.textChangeAsChannel
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.*
-import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.consumeEach
 import kotlin.coroutines.CoroutineContext
-import kotlin.coroutines.coroutineContext
+import kotlin.random.Random
 
-class MainActivity : AppCompatActivity(), CoroutineScope {
-
-    private val job = Job()
-    override val coroutineContext: CoroutineContext
-        get() = job + Dispatchers.Main
+class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        GlobalScope.launch {
+        lifecycleScope.launch {
             rendezcousChannel()
-        }
-    }
-
-    /**
-    送信と受診が1:1のChannel
-     */
-    suspend fun rendezcousChannel() {
-        Log.d("MYTAG", "start")
-        val channel = Channel<Int>(Channel.RENDEZVOUS)
-        GlobalScope.launch {
-            repeat(5) {
-                Log.d("MYTAG", "Send $it")
-                channel.send(it) //受診されるまで中断する
-                delay(1)
+            edit.textChangeAsChannel().consumeEach {
+                text.text = Random.nextInt(1000).toString()
             }
-            channel.close()
         }
-        channel.consumeEach {
-            //値が届くまで中断する
-            Log.d("MYTAG", "Receive $it")
-            delay(1)
-        }
-        Log.d("MYTAG", "End")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        job.cancel()
     }
 }

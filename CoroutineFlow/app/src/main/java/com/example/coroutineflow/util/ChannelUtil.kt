@@ -3,10 +3,12 @@ package com.example.coroutineflow.util
 import android.util.Log
 import android.widget.TextView
 import androidx.core.widget.addTextChangedListener
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.ReceiveChannel
 import kotlinx.coroutines.channels.consumeEach
+import kotlinx.coroutines.channels.produce
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -47,4 +49,11 @@ fun TextView.textChangeAsChannel(): ReceiveChannel<String?>{
         removeTextChangedListener(textWatcher)
     }
     return channel
+}
+
+fun CoroutineScope.intStream(): ReceiveChannel<Int> = produce {
+    repeat(10){
+        Log.d("MYTAG", "send : $it")
+        send(it)
+    }
 }

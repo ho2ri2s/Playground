@@ -56,7 +56,23 @@
                     android:textColor="@color/windowBackground"
                     android:textSize="20sp" />
 
-                <!-- TODO CrystalSeekbar -->
+                <com.crystal.crystalrangeseekbar.widgets.CrystalSeekbar
+                    xmlns:sb="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/animation_speed_seekbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="24dp"
+                    sb:bar_color="@color/filter_seek_bar_color"
+                    sb:bar_highlight_color="@color/filter_seek_bar_selected_color"
+                    sb:corner_radius="10"
+                    sb:data_type="_double"
+                    sb:left_thumb_color="@color/filter_pill_selected_color"
+                    sb:left_thumb_color_pressed="@color/filter_pill_selected_color"
+                    sb:max_value="1.0"
+                    sb:min_start_value="0.8"
+                    sb:min_value="0.1"
+                    sb:steps="0.1" />
+
 
             </LinearLayout>
 

@@ -4,12 +4,15 @@ const server = http.createServer((req, res) => {
     const now = new Date();
     console.info('[' + now + '] Requested by ' + req.connection.remoteAddress);
     res.writeHead(200, {
-        'Content-Type': 'text/plain; charset=utf-8'
+        'Content-Type': 'text/html; charset=utf-8'
     });
     // requestで使われたメソッドで判定
     switch (req.method) {
         case 'GET':
-            res.write('GET ' + req.url);
+            const fs = require('fs');
+            const rs = fs.createReadStream('./form.html');
+            //パイプ：読み込みStreamと書き込みStreamをそのままつないでデータを受け渡すことができる。
+            rs.pipe(res);
             break;
         case 'POST':
             //curlで -dオプションをつけるとPOSTでリクエストが飛ぶ
@@ -18,16 +21,20 @@ const server = http.createServer((req, res) => {
             req.on('data', (chunk) => {
                 rawData = rawData + chunk;
             }).on('end', () => {
-                console.info('[' + now + '] Data posted: ' + rawData);
+                const decoded = decodeURIComponent(rawData);
+                console.info('[' + now + '] 投稿： ' + decoded);
+                res.write('<!DOCTYPE html><html lang="ja"><body><h1>' +
+                    decoded + 'が投稿されました</h1></body></html>');
+                res.end();
             });
             break;
         case 'DELETE':
+            //curlで -XオプションをつけるとDELETEリクエストが飛ぶ
             res.write('DELETE' + req.url);
             break;
         default:
             break;
     }
-    res.end();
 }).on('error', (e) => {
     console.error('[' + new Date() + '] Server Error', e);
 }).on('clientError', (e) => {

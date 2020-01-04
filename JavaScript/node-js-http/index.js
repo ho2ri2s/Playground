@@ -1,5 +1,6 @@
 'use strict';
 const http = require('http');
+const pug = require('pug');
 const server = http.createServer((req, res) => {
     const now = new Date();
     console.info('[' + now + '] Requested by ' + req.connection.remoteAddress);
@@ -9,10 +10,21 @@ const server = http.createServer((req, res) => {
     // requestで使われたメソッドで判定
     switch (req.method) {
         case 'GET':
-            const fs = require('fs');
-            const rs = fs.createReadStream('./form.html');
+            if (req.url === '/enquetes/yaki-shabu') {
+                res.write(pug.renderFile('./form.pug', {
+                    path: req.url,
+                    firstItem: '焼肉',
+                    secondItem: 'しゃぶしゃぶ'
+                }));
+            } else if (req.url === '/enquetes/rice-bread') {
+                res.write(pug.renderFile('./form.pug', {
+                    path: req.url,
+                    firstItem: 'ごはん',
+                    secondItem: 'パン'
+                }));
+            };
+            res.end();
             //パイプ：読み込みStreamと書き込みStreamをそのままつないでデータを受け渡すことができる。
-            rs.pipe(res);
             break;
         case 'POST':
             //curlで -dオプションをつけるとPOSTでリクエストが飛ぶ

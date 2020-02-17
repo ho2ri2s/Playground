@@ -1,0 +1,10 @@
+{
+    "name": "todo-bot",
+    "version": "1.0.0",
+    "main": "index.js",
+    "author": "ISC",
+    "scripts": {
+        "test": "node test.js"
+    },
+    "license": "MIT"
+}

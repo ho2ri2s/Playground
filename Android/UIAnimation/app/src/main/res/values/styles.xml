@@ -9,6 +9,8 @@
         <item name="android:windowBackground">@color/windowBackground</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:timePickerDialogTheme">@style/TimePickerTheme</item>
+        <item name="android:timePickerStyle">@style/TimePickerTheme</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
@@ -20,6 +22,15 @@
         <item name="android:textColor">#FFF</item>
     </style>
 
+    <style name="TimePickerTheme" parent="android:Widget.Material.Light.TimePicker">
+        <item name="android:headerBackground">#ffe082</item>
+        <item name="android:numbersTextColor">#b71c1c</item>
+        <item name="android:numbersInnerTextColor">#f44336</item>
+        <item name="android:numbersSelectorColor">#33691e</item>
+        <item name="android:numbersBackgroundColor">#ef9a9a</item>
+        <item name="android:amPmTextColor">#9c27b0</item>
+        <item name="android:windowBackground">@android:color/black</item>
+    </style>
     <style name="drawer_title">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>

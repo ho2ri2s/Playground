@@ -1,4 +1,4 @@
-package com.example.uianimation
+package com.example.uianimation.animation
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -15,7 +15,11 @@ class MainListAdapter(private val context: Context) :
 
     // filteredItems is a static field to simulate filtering of random items
     private val filteredItems = intArrayOf(2, 5, 6, 8, 12)
-    private val modelList = List(20) { MainListModel(it) }
+    private val modelList = List(20) {
+        MainListModel(
+            it
+        )
+    }
     private val modelListFiltered = modelList.filter { it.id !in filteredItems }
     private val adapterList: List<MainListModel>
         get() = if (isFiltered) modelListFiltered else modelList
@@ -33,7 +37,9 @@ class MainListAdapter(private val context: Context) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
         val binding = ItemListBinding.inflate(LayoutInflater.from(context), parent, false)
-        return ListViewHolder(binding)
+        return ListViewHolder(
+            binding
+        )
     }
 
     override fun getItemCount(): Int = adapterList.size

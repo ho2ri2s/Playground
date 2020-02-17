@@ -1,6 +1,7 @@
-package com.example.uianimation
+package com.example.uianimation.animation
 
 import androidx.recyclerview.widget.DiffUtil
+import com.example.uianimation.animation.MainListModel
 
 class MainListDiffUtil(
     private val oldList: List<MainListModel>,

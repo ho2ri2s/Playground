@@ -1,8 +1,9 @@
-package com.example.uianimation
+package com.example.uianimation.animation
 
 import android.view.View
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.ViewCompat
+import com.example.uianimation.R
 import com.google.android.material.appbar.AppBarLayout
 
 class ToolbarBehavior : CoordinatorLayout.Behavior<AppBarLayout>() {

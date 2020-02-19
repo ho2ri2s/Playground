@@ -28,7 +28,7 @@
                     android:textSize="72sp" />
 
                 <TextView
-                    style="@style/drawer_title"
+                    style="@style/DrawerTitle"
                     android:text="Animation Speed:" />
 
                 <LinearLayout
@@ -71,7 +71,7 @@
                 </LinearLayout>
 
                 <TextView
-                    style="@style/drawer_title"
+                    style="@style/DrawerTitle"
                     android:text="View code:" />
 
                 <TextView
@@ -89,7 +89,7 @@
                     android:textSize="24sp" />
 
                 <TextView
-                    style="@style/drawer_title"
+                    style="@style/DrawerTitle"
                     android:text="Follow me:"/>
 
                 <TextView
@@ -107,7 +107,7 @@
                     android:textSize="24sp" />
 
                 <TextView
-                    style="@style/drawer_title"
+                    style="@style/DrawerTitle"
                     android:id="@+id/navigate_ui_activity"
                     android:text="Navigate UI Activity"/>
 

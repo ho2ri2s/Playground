@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.observe
 import com.example.uianimation.R
 import com.example.uianimation.databinding.ActivityUiBinding
 import org.koin.android.ext.android.inject
@@ -18,9 +19,12 @@ class UiActivity : AppCompatActivity() {
     }
 
     private val viewModel: UiViewModel by inject()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ui)
+
+        binding.viewModel = viewModel
 
         binding.btnTimePicker.setOnClickListener {
             val calendar = Calendar.getInstance()
@@ -38,6 +42,10 @@ class UiActivity : AppCompatActivity() {
                 }, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), false
             )
             dialog.show()
+        }
+
+        viewModel.buttonText.observe(this) {
+            Log.d("MYTAG", it)
         }
     }
 }

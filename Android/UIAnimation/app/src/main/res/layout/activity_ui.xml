@@ -4,24 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.UiActivity">
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.uianimation.ui.UiViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <Button
             android:id="@+id/btn_time_picker"
+            style="@style/ButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@android:color/holo_blue_dark"
-            android:focusable="true"
-            android:foreground="?selectableItemBackground"
             android:text="show timePicker"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_livedata"
+            style="@style/ButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LiveData Button"
+            android:onClick="@{() -> viewModel.changeText()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_time_picker" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

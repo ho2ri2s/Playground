@@ -31,7 +31,8 @@
         <item name="android:amPmTextColor">#9c27b0</item>
         <item name="android:windowBackground">@android:color/black</item>
     </style>
-    <style name="drawer_title">
+
+    <style name="DrawerTitle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="fontFamily">@font/annie_use_your_telescope</item>
@@ -40,5 +41,13 @@
         <item name="android:layout_marginStart">24dp</item>
         <item name="android:layout_marginTop">24dp</item>
         <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="ButtonStyle">
+        <item name="backgroundTint">@android:color/holo_blue_dark</item>
+        <item name="android:focusable">true</item>
+        <item name="android:foreground">?selectableItemBackground</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">16sp</item>
     </style>
 </resources>

@@ -1,14 +1,14 @@
 package com.example.uianimation.ui
 
 import android.app.TimePickerDialog
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.TimePicker
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.uianimation.R
 import com.example.uianimation.databinding.ActivityUiBinding
+import org.koin.android.ext.android.inject
 import java.util.*
 
 class UiActivity : AppCompatActivity() {
@@ -17,6 +17,7 @@ class UiActivity : AppCompatActivity() {
         DataBindingUtil.setContentView<ActivityUiBinding>(this, R.layout.activity_ui)
     }
 
+    private val viewModel: UiViewModel by inject()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ui)

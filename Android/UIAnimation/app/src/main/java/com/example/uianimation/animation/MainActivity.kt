@@ -7,6 +7,7 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.uianimation.ListActivity
 import com.example.uianimation.R
 import com.example.uianimation.databinding.ActivityMainBinding
 import com.example.uianimation.databinding.NavDrawerBinding
@@ -62,6 +63,10 @@ class MainActivity : AppCompatActivity() {
             }
             navigateUiActivity.setOnClickListener {
                 val intent = Intent(this@MainActivity, UiActivity::class.java)
+                startActivity(intent)
+            }
+            navigateListActivity.setOnClickListener {
+                val intent = Intent(this@MainActivity, ListActivity::class.java)
                 startActivity(intent)
             }
         }

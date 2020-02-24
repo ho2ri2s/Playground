@@ -90,7 +90,7 @@
 
                 <TextView
                     style="@style/DrawerTitle"
-                    android:text="Follow me:"/>
+                    android:text="Follow me:" />
 
                 <TextView
                     android:id="@+id/github_me_link"
@@ -107,9 +107,14 @@
                     android:textSize="24sp" />
 
                 <TextView
-                    style="@style/DrawerTitle"
                     android:id="@+id/navigate_ui_activity"
-                    android:text="Navigate UI Activity"/>
+                    style="@style/DrawerTitle"
+                    android:text="Navigate UI Activity" />
+
+                <TextView
+                    android:id="@+id/navigate_list_activity"
+                    style="@style/DrawerTitle"
+                    android:text="Navigate List Activity" />
 
             </LinearLayout>
         </com.google.android.material.navigation.NavigationView>
